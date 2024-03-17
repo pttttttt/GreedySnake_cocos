@@ -42,8 +42,8 @@ export class gameRoot extends Component {
   }
   _gameOver (position: positionArr) { // 游戏结束
     this._gameStatus = false
-    this._generateNode(this.overRoot, this.overPrefab, [position[0], position[1]]) // 碰撞位置提示
     this.unschedule(this._advance) // 移动停止
+    this._generateNode(this.overRoot, this.overPrefab, [position[0], position[1]]) // 碰撞位置提示
     // setTimeout(() => { // 测试 bug
     //   this._reset()
     //   this.newGame()
@@ -86,6 +86,7 @@ export class gameRoot extends Component {
     this._snakeBodyDataOrigin.pop()
   }
   initSnake () { // 初始化身体
+    this._snakeBodyDataOrigin = []
     for (let n = this._snakeBodyData.length, i = 0; i < n; i++) {
       this._generateNode(this.snakeRoot, this.bodyPrefab, this._snakeBodyData[i])
       this._snakeBodyDataOrigin[i] = this._snakeBodyData[i]
